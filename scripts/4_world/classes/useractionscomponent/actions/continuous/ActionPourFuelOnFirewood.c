@@ -45,7 +45,7 @@ class ActionPourFuelOnFirewood : ActionContinuousBase
 		Firewood wood = Firewood.Cast(action_data.m_Target.GetObject());
 		if (wood && action_data.m_MainItem)
 		{
-			Fireplace fire = FireplaceBase.Cast(GetGame().CreateObject("Fireplace", wood.GetPosition()));
+			FireplaceBase fire = FireplaceBase.Cast(GetGame().CreateObject("Fireplace", wood.GetPosition()));
 			if (fire)
 			{
 				// Create fire fuel
