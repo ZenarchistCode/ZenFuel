@@ -69,13 +69,21 @@ modded class FireplaceBase
 	{
 		super.EEItemDetached(item, slot_name);
 
+		bool deletedFuel = false;
+
 		if (GetFuelCount() == 0)
 		{
 			ItemBase fuel = ItemBase.Cast(FindAttachmentBySlotName(ATT_FIREFUEL));
 			if (fuel && fuel.IsInherited(Zen_FireFuel))
 			{
 				GetGame().ObjectDelete(fuel);
+				GetInventory().SetSlotLock(InventorySlots.GetSlotIdFromString(slot_name), false);
 			}
+		}
+		else
+		if (item.IsInherited(Zen_FireFuel))
+		{
+			GetInventory().SetSlotLock(InventorySlots.GetSlotIdFromString(slot_name), false);
 		}
 	}
 
